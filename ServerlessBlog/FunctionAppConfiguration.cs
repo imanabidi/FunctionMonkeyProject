@@ -17,8 +17,7 @@ namespace ServerlessBlog
            {
                collection.AddApplication(registry);
 
-           } ).Functions( functionBuilder => 
-               functionBuilder.HttpRoute("api/v1/post", 
+           } ).Functions( function => function.HttpRoute("/api/v1/post", 
                route =>  route.HttpFunction<AddPostCommand>(HttpMethod.Post)));
         }
     }

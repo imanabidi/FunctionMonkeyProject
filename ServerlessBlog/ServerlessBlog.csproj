@@ -7,9 +7,9 @@
     <None Remove=".gitignore" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="FunctionMonkey" Version="2.3.0" />
-    <PackageReference Include="FunctionMonkey.Compiler" Version="2.3.1" />
-    <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.31" />
+    <PackageReference Include="FunctionMonkey" Version="1.0.0" />
+    <PackageReference Include="FunctionMonkey.Compiler" Version="1.0.0" />
+    <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.26" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ServerlessBlog.Application\ServerlessBlog.Application.csproj" />
