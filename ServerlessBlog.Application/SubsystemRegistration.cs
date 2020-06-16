@@ -5,6 +5,7 @@ using System.Text;
 using AzureFromTheTrenches.Commanding.Abstractions;
 using Microsoft.Extensions.DependencyInjection;
 using ServerlessBlog.Application.Repositories;
+using ServerlessBlog.Application.Repositories.Implementions;
 
 namespace ServerlessBlog.Application
 {
@@ -12,7 +13,7 @@ namespace ServerlessBlog.Application
     {
         public static IServiceCollection AddApplication(this IServiceCollection serviceCollection, ICommandRegistry commandRegistry)
         {
-            serviceCollection.AddTransient<IPostRepository, IPostRepository>();
+            serviceCollection.AddTransient<IPostRepository, PostRepository>();
 
             commandRegistry.Discover(typeof(SubsystemRegistration).Assembly);
 

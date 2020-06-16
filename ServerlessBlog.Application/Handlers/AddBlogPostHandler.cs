@@ -5,6 +5,7 @@ using ServerlessBlog.Application.Models;
 using ServerlessBlog.Application.Models.Documents;
 using ServerlessBlog.Application.Repositories;
 using ServerlessBlog.Commands;
+using ServerlessBlog.Commands.Models;
 
 namespace ServerlessBlog.Application.Handlers
 {
@@ -13,7 +14,7 @@ namespace ServerlessBlog.Application.Handlers
     /// wont be aware of serviceBus or triggers ,
     /// uses Command Mediator pattern gives us clean Separation
     /// </summary>
-    public class AddPostHandler : ICommandHandler<AddPostCommand>
+    public class AddPostHandler : ICommandHandler<AddPostCommand, Post>
     {
         private readonly IPostRepository _repository;
 
@@ -22,11 +23,27 @@ namespace ServerlessBlog.Application.Handlers
             _repository = repository;
         }
 
-        public async Task ExecuteAsync(AddPostCommand command)
+        public async Task<Post> ExecuteAsync(AddPostCommand command, Post previousResult)
         {
             PostDocument postDocument = CreatePostDocument(command);
 
             await AddPostDocumentToRepository(postDocument);
+
+            return ConvertToPost(postDocument);
+        }
+
+        private Post ConvertToPost(PostDocument postDocument)
+        {
+            return new Post
+            {
+
+                Id = Guid.NewGuid(),
+                CreationDateTime = DateTime.UtcNow,
+                Description = postDocument.Body,
+                Title = postDocument.Title,
+                CreatedByUserId = postDocument.CreatedByUserId
+            };
+
         }
 
         private async Task AddPostDocumentToRepository(PostDocument postDocument)

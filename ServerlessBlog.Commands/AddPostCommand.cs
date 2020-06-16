@@ -4,7 +4,7 @@ using ServerlessBlog.Commands.Models;
 
 namespace ServerlessBlog.Commands
 {
-    public class AddPostCommand : ICommand
+    public class AddPostCommand : ICommand<Post>
     {
         /// <summary>
         /// Later we will use Identity server to fill this up

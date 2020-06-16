@@ -11,3 +11,4 @@ namespace ServerlessBlog.Application.Repositories
         Task Add(PostDocument postDocument);
     }
 }
+
