@@ -1,0 +1,12 @@
+﻿using System;
+
+namespace ServerlessBlog.Commands.Models
+{
+    public class Post : PostAbstract
+    {
+        public Guid Id { get; set; }
+        public DateTime CreationDateTime { get; set; }
+        public Guid CreatedByUserId { get; set; }
+        
+    }
+}
