@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
+using AutoMapper;
 using FunctionMonkey.Abstractions;
 using FunctionMonkey.Abstractions.Builders;
 using FunctionMonkey.FluentValidation;
@@ -15,13 +16,21 @@ namespace ServerlessBlog
         public void Build(IFunctionHostBuilder builder)
         {
             builder
-                .Setup((collection, registry) => {
-                collection.AddApplication(registry);
+                .Setup((collection, registry) =>
+                {
+                    collection
+                        .AddApplication(registry)
+                        .AddAutoMapper(typeof(SubsystemRegistration));
                 })
                 .AddFluentValidation()
                 .Functions(function => function
-                    .HttpRoute("/api/v1/post", route => route.
-                        HttpFunction<AddPostCommand>(HttpMethod.Post)));
+                    .HttpRoute("/" +
+                               "v1/post", route => route
+                        .HttpFunction<AddPostCommand>(HttpMethod.Post)
+                        .HttpFunction<GetPostQuery>("/{postId}", HttpMethod.Get))
+                    )
+
+                ;
         }
     }
 }

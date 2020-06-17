@@ -14,11 +14,11 @@ namespace ServerlessBlog.Application.Handlers
     /// wont be aware of serviceBus or triggers ,
     /// uses Command Mediator pattern gives us clean Separation
     /// </summary>
-    public class AddPostHandler : ICommandHandler<AddPostCommand, Post>
+    public class AddPostCommandHandler : ICommandHandler<AddPostCommand, Post>
     {
         private readonly IPostRepository _repository;
 
-        public AddPostHandler(IPostRepository repository)
+        public AddPostCommandHandler(IPostRepository repository)
         {
             _repository = repository;
         }
