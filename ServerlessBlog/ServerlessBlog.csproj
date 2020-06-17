@@ -9,6 +9,7 @@
   <ItemGroup>
     <PackageReference Include="FunctionMonkey" Version="1.0.0" />
     <PackageReference Include="FunctionMonkey.Compiler" Version="1.0.0" />
+    <PackageReference Include="FunctionMonkey.FluentValidation" Version="1.0.0" />
     <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.26" />
   </ItemGroup>
   <ItemGroup>

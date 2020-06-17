@@ -34,12 +34,10 @@ namespace ServerlessBlog.Application.Handlers
 
         private Post ConvertToPost(PostDocument postDocument)
         {
-            return new Post
-            {
-
+            return new Post {
                 Id = Guid.NewGuid(),
                 CreationDateTime = DateTime.UtcNow,
-                Description = postDocument.Body,
+                Body = postDocument.Body,
                 Title = postDocument.Title,
                 CreatedByUserId = postDocument.CreatedByUserId
             };
@@ -53,11 +51,10 @@ namespace ServerlessBlog.Application.Handlers
 
         public PostDocument CreatePostDocument(AddPostCommand command)
         {
-            var postDocument = new PostDocument()
-            {
+            var postDocument = new PostDocument {
                 Id = Guid.NewGuid(),
                 CreationDateTime = DateTime.UtcNow,
-                Body = command.Post.Description,
+                Body = command.Post.Body,
                 Title = command.Post.Title,
                 Version = Constants.Posts.CurrentDocumentVersion,
                 CreatedByUserId = command.UserId
