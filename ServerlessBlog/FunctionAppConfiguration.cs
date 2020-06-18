@@ -23,6 +23,7 @@ namespace ServerlessBlog
                         .AddAutoMapper(typeof(SubsystemRegistration));
                 })
                 .AddFluentValidation()
+                .DefaultHttpResponseHandler<HttpResponseHandler>()
                 .Functions(function => function
                     .HttpRoute("/v1/post", route => route
                         .HttpFunction<AddPostCommand>(HttpMethod.Post)

@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using AzureFromTheTrenches.Commanding.Abstractions;
+using ServerlessBlog.Application.Exceptions;
 using ServerlessBlog.Application.Models;
 using ServerlessBlog.Application.Models.Documents;
 using ServerlessBlog.Application.Repositories;
@@ -30,11 +31,16 @@ namespace ServerlessBlog.Application.Handlers
         public async Task<Post> ExecuteAsync(GetPostQuery query, Post previousResult)
         {
             PostDocument postDocument = await _postRepository.Get(query.PostId);
+
+            if (postDocument == null)
+                throw new PostNotFoundException();
+
+
             var post = _mapper.Map<Post>(postDocument);
 
             return post;
         }
-        
+
 
     }
 }
