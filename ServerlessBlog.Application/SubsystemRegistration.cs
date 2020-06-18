@@ -18,7 +18,8 @@ namespace ServerlessBlog.Application
         {
             serviceCollection
                 .AddSingleton<IPostRepository, PostRepository>()
-                .AddTransient<IValidator<AddPostCommand>,AddPostCommandValidator>();
+                .AddTransient<IValidator<AddPostCommand>, AddPostCommandValidator>()
+                .AddTransient<IValidator<GetPostQuery>, GetPostQueryValidator>();
 
             commandRegistry.Discover(typeof(SubsystemRegistration).Assembly);
 

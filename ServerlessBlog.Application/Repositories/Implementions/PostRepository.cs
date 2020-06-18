@@ -19,11 +19,11 @@ namespace ServerlessBlog.Application.Repositories.Implementions
 
         }
 
-        public async Task<PostDocument> Get(Guid postId)
+        public   Task<PostDocument> Get(Guid postId)
         {
             var postDocument = _documents.SingleOrDefault(x => x.Id == postId);
 
-            return await Task.FromResult(postDocument);
+            return   Task.FromResult(postDocument);
         }
     }
 }

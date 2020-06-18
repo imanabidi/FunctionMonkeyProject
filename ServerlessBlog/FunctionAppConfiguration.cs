@@ -24,8 +24,7 @@ namespace ServerlessBlog
                 })
                 .AddFluentValidation()
                 .Functions(function => function
-                    .HttpRoute("/" +
-                               "v1/post", route => route
+                    .HttpRoute("/v1/post", route => route
                         .HttpFunction<AddPostCommand>(HttpMethod.Post)
                         .HttpFunction<GetPostQuery>("/{postId}", HttpMethod.Get))
                     )

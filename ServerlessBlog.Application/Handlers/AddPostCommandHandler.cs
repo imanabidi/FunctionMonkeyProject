@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using AutoMapper;
 using AzureFromTheTrenches.Commanding.Abstractions;
 using ServerlessBlog.Application.Models;
 using ServerlessBlog.Application.Models.Documents;
@@ -14,13 +15,15 @@ namespace ServerlessBlog.Application.Handlers
     /// wont be aware of serviceBus or triggers ,
     /// uses Command Mediator pattern gives us clean Separation
     /// </summary>
-    public class AddPostCommandHandler : ICommandHandler<AddPostCommand, Post>
+    internal class AddPostCommandHandler : ICommandHandler<AddPostCommand, Post>
     {
-        private readonly IPostRepository _repository;
+        private readonly IPostRepository _postRepository;
+        private readonly IMapper _mapper;
 
-        public AddPostCommandHandler(IPostRepository repository)
+        public AddPostCommandHandler(IPostRepository postRepository, IMapper mapper)
         {
-            _repository = repository;
+            _postRepository = postRepository;
+            _mapper = mapper;
         }
 
         public async Task<Post> ExecuteAsync(AddPostCommand command, Post previousResult)
@@ -29,38 +32,30 @@ namespace ServerlessBlog.Application.Handlers
 
             await AddPostDocumentToRepository(postDocument);
 
-            return ConvertToPost(postDocument);
-        }
-
-        private Post ConvertToPost(PostDocument postDocument)
-        {
-            return new Post {
-                Id = Guid.NewGuid(),
-                CreationDateTime = DateTime.UtcNow,
-                Body = postDocument.Body,
-                Title = postDocument.Title,
-                CreatedByUserId = postDocument.CreatedByUserId
-            };
-
+            return CreatePostFromDocument(postDocument);
         }
 
         private async Task AddPostDocumentToRepository(PostDocument postDocument)
         {
-            await _repository.Add(postDocument);
+            await _postRepository.Add(postDocument);
         }
 
-        public PostDocument CreatePostDocument(AddPostCommand command)
+        private PostDocument CreatePostDocument(AddPostCommand command)
         {
-            var postDocument = new PostDocument {
-                Id = Guid.NewGuid(),
-                CreationDateTime = DateTime.UtcNow,
+            return new PostDocument
+            {
                 Body = command.Post.Body,
+                CreatedByUserId = command.UserId,
+                Id = Guid.NewGuid(),
+                PostedAtUtc = DateTime.UtcNow,
                 Title = command.Post.Title,
-                Version = Constants.Posts.CurrentDocumentVersion,
-                CreatedByUserId = command.UserId
+                Version = Constants.Posts.CurrentDocumentVersion
             };
+        }
 
-            return postDocument;
+        private Post CreatePostFromDocument(PostDocument postDocument)
+        {
+            return _mapper.Map<Post>(postDocument);
         }
     }
 }
