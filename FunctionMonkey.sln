@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerlessBlog.Application"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerlessBlog.Commands", "ServerlessBlog.Commands\ServerlessBlog.Commands.csproj", "{EC380DE6-2F48-41FB-9BD0-A534DB39E186}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsoleApp", "TestConsoleApp\TestConsoleApp.csproj", "{3B084261-92F8-48F3-A2A6-3191B066B976}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{EC380DE6-2F48-41FB-9BD0-A534DB39E186}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC380DE6-2F48-41FB-9BD0-A534DB39E186}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC380DE6-2F48-41FB-9BD0-A534DB39E186}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B084261-92F8-48F3-A2A6-3191B066B976}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B084261-92F8-48F3-A2A6-3191B066B976}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B084261-92F8-48F3-A2A6-3191B066B976}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B084261-92F8-48F3-A2A6-3191B066B976}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
