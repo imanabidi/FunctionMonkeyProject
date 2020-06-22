@@ -7,9 +7,9 @@ namespace TestConsoleApp
     class Program
     {
         static List<long> list1 = new List<long>();
-       static HashSet<long> set = new HashSet<long>();
-        
-        
+        static HashSet<long> set = new HashSet<long>();
+
+
         static void Main(string[] args)
         {
             Console.WriteLine("part 1 default ID gen");
@@ -23,13 +23,13 @@ namespace TestConsoleApp
             for (int i = 0; i < 10000; i++)
             {
                 if (!set.Add(DateTime.Now.Ticks))
-                    throw new Exception("Duplicate detected");
+                    throw new Exception("Duplicate detected");// why no duplicates
             }
 
             foreach (var l in set)
                 Console.WriteLine(l);
-            
-            
+
+
             Console.WriteLine("part 3 B4P ID gen");
             list1 = new List<long>();
             var epoch = new DateTime(2019, 1, 1, 0, 0, 0, DateTimeKind.Utc);

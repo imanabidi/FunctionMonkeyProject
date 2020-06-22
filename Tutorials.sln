@@ -9,7 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerlessBlog.Application"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerlessBlog.Commands", "ServerlessBlog.Commands\ServerlessBlog.Commands.csproj", "{EC380DE6-2F48-41FB-9BD0-A534DB39E186}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsoleApp", "TestConsoleApp\TestConsoleApp.csproj", "{3B084261-92F8-48F3-A2A6-3191B066B976}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestConsoleApp", "TestConsoleApp\TestConsoleApp.csproj", "{3B084261-92F8-48F3-A2A6-3191B066B976}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tutorials.DurableFunctions", "FunctionAppQuickStart\Tutorials.DurableFunctions.csproj", "{1A9A7C54-344A-496A-A5F7-9845E7C265B7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FunctionMonkey", "FunctionMonkey", "{438273F5-4539-4934-B5F7-3ED45C736E28}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DurableFunctions", "DurableFunctions", "{D6C932F3-0565-455F-8247-2641E4F523A7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,9 +39,19 @@ Global
 		{3B084261-92F8-48F3-A2A6-3191B066B976}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B084261-92F8-48F3-A2A6-3191B066B976}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B084261-92F8-48F3-A2A6-3191B066B976}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A9A7C54-344A-496A-A5F7-9845E7C265B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A9A7C54-344A-496A-A5F7-9845E7C265B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A9A7C54-344A-496A-A5F7-9845E7C265B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A9A7C54-344A-496A-A5F7-9845E7C265B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{50BF0C35-F9FA-437D-8B25-8F7286B00B06} = {438273F5-4539-4934-B5F7-3ED45C736E28}
+		{C969CAE1-A906-40BA-A2DF-BB04222809F3} = {438273F5-4539-4934-B5F7-3ED45C736E28}
+		{EC380DE6-2F48-41FB-9BD0-A534DB39E186} = {438273F5-4539-4934-B5F7-3ED45C736E28}
+		{1A9A7C54-344A-496A-A5F7-9845E7C265B7} = {D6C932F3-0565-455F-8247-2641E4F523A7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {75EB507F-B611-4AA6-9D71-F2F5755B038B}
